@@ -1,5 +1,3 @@
-import { PROJECT_CONFIG } from './config.js';
-
 class Game {
     constructor() {
         this.score = 0;
@@ -777,17 +775,18 @@ class Game {
     createCoin() {
         const coinElement = document.createElement('div');
         coinElement.className = 'coin';
-        coinElement.innerHTML = PROJECT_CONFIG.collectEmoji; // Используем эмодзи из конфига
+        coinElement.innerHTML = '🍣'; // Используем эмодзи суши
         const lane = Math.floor(Math.random() * this.laneRatios.length);
         coinElement.style.left = `${this.laneRatios[lane] * 100}%`;
         const initialY = 0; 
-        coinElement.style.transform = `translateY(${initialY}px)`;
+        coinElement.style.transform = `translateY(${initialY}px)`; // Новый способ, CSS центрирует по X
+
         if (this.gameArea) {
             this.gameArea.appendChild(coinElement);
             this.coins.push({ 
                 element: coinElement, 
                 lane: lane, 
-                y: initialY 
+                y: initialY // Сохраняем начальную Y координату
             });
         }
     }
@@ -1293,7 +1292,7 @@ class Game {
         try {
             if (typeof ym !== 'undefined') {
                 console.log(`Отправка события: ${eventName}`, params);
-                ym(PROJECT_CONFIG.yandexMetrikaId, 'reachGoal', eventName, params);
+                ym(102749320, 'reachGoal', eventName, params);
             }
         } catch (error) {
             console.error('Ошибка при отправке события в метрику:', error);

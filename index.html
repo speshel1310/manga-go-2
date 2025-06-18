@@ -9,37 +9,27 @@
     <script src="https://unpkg.com/@supabase/supabase-js"></script>
     
     <!-- Yandex.Metrika counter -->
-    <script type="module">
-    import { PROJECT_CONFIG } from './config.js';
-    window.PROJECT_CONFIG = PROJECT_CONFIG;
-    const metrikaId = PROJECT_CONFIG.yandexMetrikaId;
-    const script = document.createElement('script');
-    script.innerHTML = `
-    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-    m[i].l=1*new Date();
-    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-    ym(${metrikaId}, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true,
-        webvisor:true
-    });
-    `;
-    document.head.appendChild(script);
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(102749320, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+       });
     </script>
-    <noscript id="metrika-noscript"></noscript>
-    <script type="module">
-    import { PROJECT_CONFIG } from './config.js';
-    document.getElementById('metrika-noscript').innerHTML = `<div><img src="https://mc.yandex.ru/watch/${PROJECT_CONFIG.yandexMetrikaId}" style="position:absolute; left:-9999px;" alt="" /></div>`;
-    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/102749320" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
 </head>
 <body>
     <div id="auth-screen">
         <div class="auth-content">
-            <h2 id="main-heading"></h2>
+            <h2>MANGA</h2>
             
             <div id="pending-score-auth-message" class="hidden">
                 <!-- Сообщение о набранных очках будет вставляться сюда из JS -->
@@ -47,7 +37,7 @@
 
             <div class="game-rules">
                 <p>Правила игры:</p>
-                <p>Собери максимум гиросов за 1 минуту. Топ-3 игрокам за месяц дарим 1000 рублей на бонусный счет, а все участники получат промокод на скидку. Период акции - 1 месяц.</p>
+                <p>Собери максимум гиросов за 1 минуту. Топ-3 игрокам за месяц дарим 1000 тенге на бонусный счет, а все участники получат промокод на скидку. Период акции - 1 месяц.</p>
                 <p>Управление:</p>
                 <p>ПК: стрелочки (← → )</p>
                 <p>Смартфон: свайпы/кнопки</p>
@@ -55,7 +45,7 @@
             </div>
             
             <form id="auth-form">
-                <div class="form-group form-group-hidden">
+                <div class="form-group">
                     <label for="player-phone">Ваш номер телефона:</label>
                     <input type="tel" id="player-phone" name="player-phone" placeholder="+7" pattern="^(\+?7|8)[0-9]{10}$" title="Формат номера: 79999999999 или +79999999999">
                 </div>
@@ -67,7 +57,7 @@
     <div class="game-container hidden" id="game-container">
         <div class="game-header">
             <div class="score">Очки: <span id="score">0</span></div>
-            <div class="logo" id="logo"></div>
+            <div class="logo">MANGA</div>
             <div class="timer">Время: <span id="timer">60</span>с</div>
         </div>
         
@@ -96,7 +86,7 @@
 
         <div id="game-over" class="hidden">
             <div class="game-over-content">
-                <h2 id="gameover-heading"></h2>
+                <h2>GAME OVER</h2>
                 <p>Вы набрали: <span id="final-score">0</span> очков</p>
                 <p class="result-message"></p>
                 
@@ -113,7 +103,7 @@
 
         <div id="leaderboard" class="hidden">
             <div class="leaderboard-content">
-                <h2 id="leaderboard-heading"></h2>
+                <h2>Таблица рекордов</h2>
                 <div id="leaderboard-list">
                     <!-- Top players will be added here by JS -->
                 </div>
@@ -121,13 +111,6 @@
             </div>
         </div>
     </div>
-    <script type="module" src="game.js"></script>
-    <script type="module">
-    import { PROJECT_CONFIG } from './config.js';
-    document.getElementById('main-heading').textContent = PROJECT_CONFIG.projectTitle;
-    document.getElementById('gameover-heading').textContent = PROJECT_CONFIG.headings[1];
-    document.getElementById('leaderboard-heading').textContent = PROJECT_CONFIG.headings[2];
-    document.getElementById('logo').textContent = PROJECT_CONFIG.projectTitle;
-    </script>
+    <script src="game.js"></script>
 </body>
 </html> 
